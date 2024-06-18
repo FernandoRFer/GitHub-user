@@ -7,7 +7,7 @@ class AnimatedLoading extends StatelessWidget {
   final String title;
   const AnimatedLoading({
     super.key,
-    this.title = "Loading ",
+    this.title = "Carregando",
   });
 
   @override

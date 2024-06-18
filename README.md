@@ -1,16 +1,9 @@
 # open_labs
 
-A new Flutter project.
+Este aplicativo é projetado para facilitar a busca de usuários no GitHub. Com ele, você pode pesquisar um usuário pelo nome e aplicar filtros para refinar os resultados da busca. Além disso, o sistema armazena automaticamente cada pesquisa em seu histórico, permitindo fácil acesso a buscas anteriores e a opção de excluir qualquer pesquisa realizada anteriormente.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+Requisitos: 
+Android SDK minomo 22
+Flutter >=3.0.0 <4.0.0
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.

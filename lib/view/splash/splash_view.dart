@@ -64,10 +64,10 @@ class _SplashViewState extends State<SplashView>
                 });
               }
               return const Column(
-                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    "seja benvindo\na busca de usuários GitHub",
+                    "Seja bem vindo,\nbusca de usuário GitHub",
                     style: TextStyle(fontFamily: "Chunk", fontSize: 32),
                   ),
                   AnimatedLoading(),
