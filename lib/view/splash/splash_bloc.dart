@@ -40,7 +40,7 @@ class SplashBloc extends ChangeNotifier implements ISplashBloc {
     try {
       await Future.delayed(const Duration(seconds: 3));
 
-      _navigatorApp.pushReplacementNamed(AppRoutes.home);
+      // _navigatorApp.pushReplacementNamed(AppRoutes.home);
     } catch (e) {
       final error = await _globalError.errorHandling(
         "Um erro  ocorreu ao conectar, tente novamente",
