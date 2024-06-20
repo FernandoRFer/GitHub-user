@@ -26,7 +26,7 @@ if (flutterVersionName == null) {
 android {
     namespace = "com.example.open_labs"
     compileSdk = flutter.compileSdkVersion
-    ndkVersion = flutter.ndkVersion
+    ndkVersion = "26.1.10909125"
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -42,6 +42,7 @@ android {
         targetSdk = flutter.targetSdkVersion
         versionCode = flutterVersionCode.toInteger()
         versionName = flutterVersionName
+
         
     }
 
@@ -52,6 +53,9 @@ android {
             signingConfig = signingConfigs.debug
         }
     }
+
+    buildFeatures.buildConfig = true
+
 }
 
 flutter {
