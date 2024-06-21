@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:mockito/mockito.dart';
 
-import 'package:mocktail/mocktail.dart';
 import 'package:open_labs/core/helpers/global_error.dart';
 import 'package:open_labs/core/navigator_app.dart';
 import 'package:open_labs/view/splash/splash_bloc.dart';

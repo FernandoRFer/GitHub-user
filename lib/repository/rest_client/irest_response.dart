@@ -6,4 +6,7 @@ abstract class IRestResponse {
   String get content;
   Uint8List get contentBytes;
   bool get unauthorized;
+  void ensureSuccess(
+      {Function()? customErrorMessage,
+      required String restClientExceptionMessage});
 }
