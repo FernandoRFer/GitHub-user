@@ -41,6 +41,8 @@ class MockRestClient200 extends Mock implements IRestClient {
 
 @GenerateMocks([MockRestClient404])
 main() async {
+  late IRestClient restClient;
+
   setUpAll(() {
     print("Starting tests Repository user");
   });
@@ -49,8 +51,6 @@ main() async {
     print("Ending tests Repository user");
   });
 
-  late IRestClient restClient;
-  // late IUserRepository userRepository;
   group('not found test exception', () {
     setUp(() {
       restClient = MockRestClient404();
