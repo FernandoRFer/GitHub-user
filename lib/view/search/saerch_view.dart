@@ -24,9 +24,6 @@ class _SearchViewState extends State<SearchView> {
   void initState() {
     super.initState();
     widget.bloc.loadingHistory();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      FocusScope.of(context).requestFocus(_focusNode);
-    });
   }
 
   @override
@@ -45,6 +42,7 @@ class _SearchViewState extends State<SearchView> {
           title: TextFormField(
             controller: _userController,
             focusNode: _focusNode,
+            autofocus: true,
             showCursor: true,
             textInputAction: TextInputAction.done,
             onFieldSubmitted: (_) {
@@ -128,6 +126,7 @@ class _SearchViewState extends State<SearchView> {
                           AppOutlinedButton(
                             "Voltar",
                             onPressed: () {
+                              widget.bloc.navigatorPop();
                               widget.bloc.navigatorPop();
                             },
                           ),

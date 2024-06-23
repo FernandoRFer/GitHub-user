@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 import 'core/module_init.dart';
 import 'core/router/navigator_observer.dart';
@@ -11,6 +12,7 @@ void main() async {
   final globalRouteObserver = GlobalRouteObserver();
 
   WidgetsFlutterBinding.ensureInitialized();
+  _sqfliteTestInit();
   AppModule(navigatorKey).configure();
 
   return runApp(AppWidget(navigatorKey, globalRouteObserver));
@@ -54,4 +56,11 @@ class _AppWidgetState extends State<AppWidget> {
       routes: AppRoutes.routes,
     );
   }
+}
+
+void _sqfliteTestInit() {
+  // Initialize ffi implementation
+  sqfliteFfiInit();
+  // Set global factory
+  databaseFactory = databaseFactoryFfi;
 }
