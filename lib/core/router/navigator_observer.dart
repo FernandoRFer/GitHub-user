@@ -14,14 +14,10 @@ class GlobalRouteObserver extends NavigatorObserver {
   }
 
   @override
-  void didStartUserGesture(Route route, Route? previousRoute) {
-    print("TesteGesture");
-  }
+  void didStartUserGesture(Route route, Route? previousRoute) {}
 
   @override
-  void didStopUserGesture() {
-    print("TesteGesture");
-  }
+  void didStopUserGesture() {}
 
   @override
   void didPush(Route route, Route? previousRoute) {

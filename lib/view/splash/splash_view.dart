@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:open_labs/components/appButton.dart';
+import 'package:open_labs/components/app_button.dart';
 import 'package:open_labs/components/loading.dart';
 import 'package:open_labs/core/helpers/bottom_sheet_helper.dart';
 import 'package:open_labs/view/splash/splash_bloc.dart';
@@ -38,7 +38,6 @@ class _SplashViewState extends State<SplashView>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(16.0),

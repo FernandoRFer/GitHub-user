@@ -4,10 +4,8 @@ import 'dart:typed_data';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'package:open_labs/repository/rest_client/irest_body_content.dart';
 import 'package:open_labs/repository/rest_client/irest_client.dart';
 import 'package:open_labs/repository/rest_client/irest_response.dart';
-import 'package:open_labs/repository/rest_client/rest_client.dart';
 import 'package:open_labs/repository/rest_client/rest_client_exception.dart';
 import 'package:open_labs/repository/rest_client/rest_response.dart';
 import 'package:open_labs/repository/user_repository/iuser_repository.dart';
@@ -42,14 +40,6 @@ class MockRestClient200 extends Mock implements IRestClient {
 @GenerateMocks([MockRestClient404])
 main() async {
   late IRestClient restClient;
-
-  setUpAll(() {
-    print("Starting tests Repository user");
-  });
-
-  tearDownAll(() {
-    print("Ending tests Repository user");
-  });
 
   group('not found test exception', () {
     setUp(() {
