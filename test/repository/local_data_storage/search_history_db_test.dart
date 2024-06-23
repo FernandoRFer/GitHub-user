@@ -27,7 +27,7 @@ Future main() async {
 
   PathProviderPlatform.instance = FakePathProviderPlatform();
 
-  group("test table", () {
+  group("test database ", () {
     setUp(() async {
       dbHistory = DbHistory();
       await dbHistory.insert(SearchHistoryModel(
@@ -37,7 +37,7 @@ Future main() async {
           searchWord: "Felipe",
           dateTime: DateTime.now().microsecondsSinceEpoch));
     });
-    test("clean table", () async {
+    test("clean database", () async {
       final historyList = await dbHistory.get();
       for (var i = 0; i < historyList.length; i++) {
         await dbHistory.remove(historyList[i].id!);
@@ -50,7 +50,7 @@ Future main() async {
       expect(historyList[1].searchWord, 'Fernando');
     });
 
-    test("clean table", () async {
+    test("clean database", () async {
       final historyList = await dbHistory.get();
       for (var i = 0; i < historyList.length; i++) {
         await dbHistory.remove(historyList[i].id!);
