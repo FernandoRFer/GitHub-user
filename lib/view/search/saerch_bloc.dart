@@ -82,6 +82,10 @@ class SearchBloc extends ChangeNotifier implements ISearchBloc {
 
   @override
   void navigatorPop() {
+    _fetchingDataController.add(SearchModelBloc(
+      "donel",
+      isLoading: false,
+    ));
     _navigatorApp.pop();
   }
 

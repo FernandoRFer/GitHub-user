@@ -115,3 +115,14 @@ class RestClient implements IRestClient {
         contentBytes: bytes);
   }
 }
+
+
+
+//exemplo http.client 
+    // Response response = await _client
+    //     .get(Uri.parse(url),
+    //         headers: MapHelper.mergeMaps([
+    //           authorization != null ? {"Authorization": authorization} : null,
+    //           headers
+    //         ]))
+    //     .timeout(Duration(seconds: secondsTimeout));

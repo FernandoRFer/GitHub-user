@@ -1,11 +1,9 @@
 import 'dart:convert';
 import 'dart:developer';
 
+import 'package:open_labs/repository/rest_client/irest_client.dart';
+import 'package:open_labs/repository/user_repository/iuser_repository.dart';
 import 'package:open_labs/repository/user_repository/model/user_model.dart';
-
-import '../rest_client/rest_response.dart';
-import '../rest_client/irest_client.dart';
-import 'iuser_repository.dart';
 
 class UserRepository implements IUserRepository {
   final IRestClient _restClient;
@@ -21,9 +19,9 @@ class UserRepository implements IUserRepository {
     var resp = await _restClient.sendGet(
       url: "$url/users/$username",
     );
-    resp.ensureSuccess(restClientExceptionMessage: "Ocorreu um erro");
 
     log(resp.content);
+    resp.ensureSuccess(restClientExceptionMessage: "Ocorreu um erro");
 
     return UserModel.fromJson(jsonDecode(resp.content));
   }

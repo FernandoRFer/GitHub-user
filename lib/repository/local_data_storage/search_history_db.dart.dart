@@ -1,6 +1,8 @@
 import 'package:open_labs/repository/local_data_storage/search_history_model.dart';
-import 'package:sqflite/sqflite.dart';
-import 'package:path/path.dart';
+import 'package:path/path.dart' as p;
+import 'dart:io' as io;
+import 'package:sqflite_common_ffi/sqflite_ffi.dart';
+import 'package:path_provider/path_provider.dart';
 
 abstract class IDbHistory {
   Future<int> insert(SearchHistoryModel searHistoryModel);
@@ -16,11 +18,11 @@ class DbHistory implements IDbHistory {
 
   Database? _db;
 
-  static final DbHistory _dbMusica = DbHistory._();
-  factory DbHistory() {
-    return _dbMusica;
-  }
-  DbHistory._();
+  // static final DbHistory instance = DbHistory._();
+  // factory DbHistory() {
+  //   return instance;
+  // }
+  // DbHistory._();
 
   get db async {
     _db ??= await starDB();
@@ -34,11 +36,20 @@ class DbHistory implements IDbHistory {
   }
 
   Future<Database> starDB() async {
-    final caminhoBancoDados = await getDatabasesPath();
-    final localBancoDados = join(caminhoBancoDados, "produtos.db");
+    // sqfliteFfiInit();
+    // var databaseFactory = databaseFactoryFfi;
 
-    Database db =
-        await openDatabase(localBancoDados, version: 1, onCreate: _onCreate);
+    final io.Directory appDocumentsDir =
+        await getApplicationDocumentsDirectory();
+
+    if (!await appDocumentsDir.exists()) {
+      appDocumentsDir.create(recursive: true);
+    }
+
+    String dbPath = p.join(appDocumentsDir.path, "produtos.db");
+
+    Database db = await databaseFactory.openDatabase(dbPath,
+        options: OpenDatabaseOptions(version: 1, onCreate: _onCreate));
 
     return db;
   }
@@ -63,7 +74,7 @@ class DbHistory implements IDbHistory {
 
   @override
   Future<int> remove(int id) async {
-    var bancoDados = await db;
+    Database bancoDados = await db;
     return await bancoDados
         .delete(_tableName, where: "id = ?", whereArgs: [id]);
   }
