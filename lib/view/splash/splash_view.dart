@@ -1,4 +1,10 @@
+import 'dart:developer';
+
+import 'package:app_links/app_links.dart';
 import 'package:flutter/material.dart';
+import 'package:rxdart/rxdart.dart';
+import 'package:url_launcher/url_launcher.dart';
+
 import 'package:open_labs/components/app_button.dart';
 import 'package:open_labs/components/loading.dart';
 import 'package:open_labs/core/helpers/bottom_sheet_helper.dart';
@@ -23,6 +29,7 @@ class _SplashViewState extends State<SplashView>
   @override
   void initState() {
     super.initState();
+
     _animation = AnimationController(
         vsync: this, duration: const Duration(milliseconds: 1000));
     widget.bloc.load();
@@ -35,8 +42,38 @@ class _SplashViewState extends State<SplashView>
     super.dispose();
   }
 
+  _testeOath() async {
+    var uri = Uri.parse("https://github.com/login/oauth/authorize")
+        .resolveUri(Uri(queryParameters: {
+      // "reponse_type": "code",
+      "client_id": "Ov23lihga4gv5k7IOqFZ",
+      "scope": "user",
+      "redirect_uri": "https://com.github.githubuser/",
+    }));
+    // log(uri.toFilePath());
+    await launchUrl(
+      uri,
+    );
+
+    final appLinks = AppLinks(); // AppLinks is singleton
+
+// Subscribe to all events (initial link and further)
+    var code = appLinks.uriLinkStream
+      ..listen((uri) {
+        log(uri.path);
+        log(uri.toString());
+
+        // Do something (navigation, ...)
+      })
+      ..timeout(const Duration(seconds: 10), onTimeout: (controller) {
+        log('TimeOut occurred');
+        controller.close();
+      });
+  }
+
   @override
   Widget build(BuildContext context) {
+    _testeOath();
     return Scaffold(
       body: Center(
         child: Padding(

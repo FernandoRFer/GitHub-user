@@ -1,4 +1,4 @@
-package com.example.open_labs
+package com.github.githubuser
 
 import io.flutter.embedding.android.FlutterActivity
 

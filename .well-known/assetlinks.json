@@ -1,0 +1,9 @@
+[{
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "com.github.githubuser",
+      "package_name": "com.github.githubuser",
+      "sha256_cert_fingerprints":
+      ["27:65:94:9A:C0:AC:F4:D3:8C:7A:FA:48:28:D3:CF:0D:F9:60:CA:1E:6B:11:9B:2E:8E:9E:D2:21:21:FA:26:DC"]
+    }
+  }]
