@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
+import 'package:open_labs/view/auth/auth_view.dart';
 import 'package:open_labs/view/home/home_view.dart';
 import 'package:open_labs/view/search/Saerch_view.dart';
 import 'package:open_labs/view/search/saerch_bloc.dart';
@@ -13,12 +14,15 @@ class AppRoutes {
   static const String splash = "/splash";
   static const String search = "/search";
 
+  static const String auth = "/auth";
+
   static GetIt getIt = GetIt.I;
 
   static Map<String, WidgetBuilder> get routes => {
         splash: (_) => SplashView(getIt.get<ISplashBloc>()),
         // home: (_) => getIt.get<HomeView>(),
         search: (_) => SearchView(getIt.get<ISearchBloc>()),
+        auth: (_) => getIt.get<AuthView>(),
       };
 
   static Route? onGenerateRoutes(RouteSettings routeSettings) {

@@ -7,11 +7,14 @@ abstract class AppDateTimeHelper {
     return DateFormat(format, "pt_BR").format(DateTime.now());
   }
 
-  static String dateTimeFormat(String date, {String? format = defaultFormat}) {
+  static String dateTimeFormat(String? date, {String? format = defaultFormat}) {
     try {
-      return DateFormat(
-        format,
-      ).format(DateTime.parse(date));
+      if (date != null) {
+        return DateFormat(
+          format,
+        ).format(DateTime.parse(date));
+      }
+      return "";
     } on Exception {
       return "Formato de data inválido";
     }

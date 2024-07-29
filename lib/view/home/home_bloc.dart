@@ -2,24 +2,28 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:open_labs/repository/model/logged_user_model.dart';
+import 'package:open_labs/repository/model/user_repos_model.dart';
 import 'package:rxdart/rxdart.dart';
 
 import 'package:open_labs/core/helpers/global_error.dart';
 import 'package:open_labs/core/navigator_app.dart';
 import 'package:open_labs/core/router/routes.dart';
-import 'package:open_labs/repository/local_data_storage/search_history_db.dart.dart';
-import 'package:open_labs/repository/local_data_storage/search_history_model.dart';
-import 'package:open_labs/repository/user_repository/iuser_repository.dart';
-import 'package:open_labs/repository/user_repository/model/user_model.dart';
+import 'package:open_labs/repository/local_db/search_history_db.dart.dart';
+import 'package:open_labs/repository/model/search_history_model.dart';
+import 'package:open_labs/repository/gihub_repository/igithub_repository.dart';
+import 'package:open_labs/repository/model/user_model.dart';
 import 'package:open_labs/view/view_state_entity.dart';
 
 class HomeModelBloc extends ViewStateEntity {
-  UserModel? user;
+  LoggedUserModel? user;
+  List<UserReposModel?> userReposModel;
   FilterModel? filter;
   bool visibleFilter;
   HomeModelBloc(
     super.state, {
     super.isLoading,
+    this.userReposModel = const [],
     this.user,
     this.filter,
     this.visibleFilter = false,
@@ -60,7 +64,7 @@ class FilterModel {
 abstract class IHomeBloc {
   Stream<HomeModelBloc> get onFetchingData;
   Stream<String> get onUserName;
-  Future<bool> load();
+  Future<void> load();
   void navigatorPop();
   Future<void> dispose();
   Future<void> getUserName(String userName);
@@ -75,7 +79,7 @@ abstract class IHomeBloc {
 class HomeBloc extends ChangeNotifier implements IHomeBloc {
   final IGlobalError _globalError;
   final INavigatorApp _navigatorApp;
-  final IUserRepository _userRepository;
+  final IGithubRepository _userRepository;
   final IDbHistory _dbHistory;
 
   HomeBloc(
@@ -89,7 +93,9 @@ class HomeBloc extends ChangeNotifier implements IHomeBloc {
 
   final _fetchingDataController = BehaviorSubject<HomeModelBloc>();
   final _userNameController = BehaviorSubject<String>();
-  UserModel? _user;
+  LoggedUserModel? _user;
+
+  final List<UserReposModel?> _userReposModel = [];
   FilterModel _filterModel = FilterModel();
   bool _visibleFilter = false;
 
@@ -101,19 +107,26 @@ class HomeBloc extends ChangeNotifier implements IHomeBloc {
   }
 
   @override
-  Future<bool> load() async {
+  Future<void> load() async {
     try {
-      _fetchingDataController.add(HomeModelBloc("Loading", isLoading: false));
-      return true;
+      _fetchingDataController.add(HomeModelBloc("Loading", isLoading: true));
+      _user = await _userRepository.getLoggedUser();
+      final userRepos = await _userRepository.repos();
+      if (userRepos.isNotEmpty) _userReposModel.addAll(userRepos);
+      _fetchingDataController.add(HomeModelBloc("concluido",
+          isLoading: false,
+          user: _user,
+          userReposModel: _userReposModel,
+          filter: _filterModel,
+          visibleFilter: _visibleFilter));
     } catch (e) {
       final error = await _globalError.errorHandling(
         "Um erro ocorreu ao conectar, tente novamente",
         e,
       );
       _fetchingDataController.addError(
-        error.message,
+        error,
       );
-      return false;
     }
   }
 
@@ -122,7 +135,7 @@ class HomeBloc extends ChangeNotifier implements IHomeBloc {
     try {
       _fetchingDataController.add(HomeModelBloc("Loading", isLoading: true));
 
-      _user = await _userRepository.getUsers(userName);
+      _user = await _userRepository.getUser(userName);
 
       await _dbHistory.insert(SearchHistoryModel(
           searchWord: userName,

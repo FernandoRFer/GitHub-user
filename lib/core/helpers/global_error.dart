@@ -36,7 +36,7 @@ class GlobalError implements IGlobalError {
         error as RestClientException;
         return GlobalErrorModel(
           GlobalErrorTypes.request,
-          error.getMessage(),
+          error.message,
         );
       case const (TimeoutException):
         error as TimeoutException;

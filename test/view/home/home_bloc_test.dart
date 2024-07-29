@@ -3,20 +3,20 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:open_labs/core/helpers/global_error.dart';
 import 'package:open_labs/core/navigator_app.dart';
-import 'package:open_labs/repository/local_data_storage/search_history_db.dart.dart';
-import 'package:open_labs/repository/user_repository/iuser_repository.dart';
-import 'package:open_labs/repository/user_repository/user_repository.dart';
+import 'package:open_labs/repository/local_db/search_history_db.dart.dart';
+import 'package:open_labs/repository/gihub_repository/igithub_repository.dart';
+import 'package:open_labs/repository/gihub_repository/gitgub_repository.dart';
 import 'package:open_labs/view/home/home_bloc.dart';
 
 class MockGlobalError extends Mock implements IGlobalError {}
 
 class MockNavigator extends Mock implements INavigatorApp {}
 
-class MockUserRepository extends Mock implements IUserRepository {}
+class MockUserRepository extends Mock implements IGithubRepository {}
 
 class MockDbHistory extends Mock implements IDbHistory {}
 
-@GenerateMocks([MockGlobalError, UserRepository, MockDbHistory])
+@GenerateMocks([MockGlobalError, GithubRepository, MockDbHistory])
 main() async {
   var nanigatorApp = MockNavigator();
   var globalError = MockGlobalError();
@@ -44,7 +44,7 @@ main() async {
     });
 
     (test("user not found", () async {
-      when(userRepository.getUsers("notfound"))
+      when(userRepository.getUser("notfound"))
           .thenAnswer((_) => throw Exception("Teste"));
       var example = HomeBloc(
         globalError,

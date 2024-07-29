@@ -1,8 +1,10 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:open_labs/components/app_button.dart';
+import 'package:open_labs/components/bottom_sheet.dart';
+import 'package:open_labs/components/error_view.dart';
 import 'package:open_labs/components/loading.dart';
-import 'package:open_labs/core/helpers/bottom_sheet_helper.dart';
+import 'package:open_labs/core/helpers/global_error.dart';
 import 'saerch_bloc.dart';
 
 class SearchView extends StatefulWidget {
@@ -116,21 +118,23 @@ class _SearchViewState extends State<SearchView> {
                     }
                   }
                 } else {
+                  final error = snapshot.error as GlobalErrorModel;
                   WidgetsBinding.instance.addPostFrameCallback((_) {
-                    BottomSheetHelper().bottomSheetCustom(
-                        subtitle: snapshot.error.toString(),
-                        isDismissible: true,
-                        enableDrag: false,
-                        context: context,
-                        buttons: [
-                          AppOutlinedButton(
-                            "Voltar",
-                            onPressed: () {
-                              widget.bloc.navigatorPop();
-                              widget.bloc.navigatorPop();
-                            },
-                          ),
-                        ]);
+                    Scaffold.of(context).bottomSheetCustom(
+                      isDismissible: true,
+                      enableDrag: true,
+                      child: ErrorView(
+                          title: "Error",
+                          subtitle: error.message,
+                          buttons: [
+                            AppOutlinedButton(
+                              "Back",
+                              onPressed: () {
+                                widget.bloc.navigatorPop();
+                              },
+                            ),
+                          ]),
+                    );
                   });
                 }
 

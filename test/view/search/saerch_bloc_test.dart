@@ -3,7 +3,7 @@ import 'package:mockito/mockito.dart';
 
 import 'package:open_labs/core/helpers/global_error.dart';
 import 'package:open_labs/core/navigator_app.dart';
-import 'package:open_labs/repository/local_data_storage/search_history_db.dart.dart';
+import 'package:open_labs/repository/local_db/search_history_db.dart.dart';
 import 'package:open_labs/view/search/saerch_bloc.dart';
 
 class MockGlobalError extends Mock implements IGlobalError {}

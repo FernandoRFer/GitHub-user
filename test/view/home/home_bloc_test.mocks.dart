@@ -7,12 +7,11 @@ import 'dart:async' as _i4;
 
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:open_labs/core/helpers/global_error.dart' as _i2;
-import 'package:open_labs/repository/local_data_storage/search_history_model.dart'
-    as _i7;
-import 'package:open_labs/repository/user_repository/model/user_model.dart'
-    as _i6;
-import 'package:open_labs/repository/user_repository/user_repository.dart'
+import 'package:open_labs/repository/gihub_repository/gitgub_repository.dart'
     as _i5;
+import 'package:open_labs/repository/model/logged_user_model.dart' as _i6;
+import 'package:open_labs/repository/model/search_history_model.dart' as _i8;
+import 'package:open_labs/repository/model/user_repos_model.dart' as _i7;
 
 import 'home_bloc_test.dart' as _i3;
 
@@ -78,22 +77,42 @@ class MockMockGlobalError extends _i1.Mock implements _i3.MockGlobalError {
       ) as _i4.Future<_i2.GlobalErrorModel>);
 }
 
-/// A class which mocks [UserRepository].
+/// A class which mocks [GithubRepository].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockUserRepository extends _i1.Mock implements _i5.UserRepository {
-  MockUserRepository() {
+class MockGithubRepository extends _i1.Mock implements _i5.GithubRepository {
+  MockGithubRepository() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i4.Future<_i6.UserModel?> getUsers(String? username) => (super.noSuchMethod(
+  _i4.Future<_i6.LoggedUserModel?> getUser(String? username) =>
+      (super.noSuchMethod(
         Invocation.method(
-          #getUsers,
+          #getUser,
           [username],
         ),
-        returnValue: _i4.Future<_i6.UserModel?>.value(),
-      ) as _i4.Future<_i6.UserModel?>);
+        returnValue: _i4.Future<_i6.LoggedUserModel?>.value(),
+      ) as _i4.Future<_i6.LoggedUserModel?>);
+
+  @override
+  _i4.Future<_i6.LoggedUserModel?> getLoggedUser() => (super.noSuchMethod(
+        Invocation.method(
+          #getLoggedUser,
+          [],
+        ),
+        returnValue: _i4.Future<_i6.LoggedUserModel?>.value(),
+      ) as _i4.Future<_i6.LoggedUserModel?>);
+
+  @override
+  _i4.Future<List<_i7.UserReposModel?>> repos() => (super.noSuchMethod(
+        Invocation.method(
+          #repos,
+          [],
+        ),
+        returnValue: _i4.Future<List<_i7.UserReposModel?>>.value(
+            <_i7.UserReposModel?>[]),
+      ) as _i4.Future<List<_i7.UserReposModel?>>);
 }
 
 /// A class which mocks [MockDbHistory].
@@ -105,7 +124,7 @@ class MockMockDbHistory extends _i1.Mock implements _i3.MockDbHistory {
   }
 
   @override
-  _i4.Future<int> insert(_i7.SearchHistoryModel? searHistoryModel) =>
+  _i4.Future<int> insert(_i8.SearchHistoryModel? searHistoryModel) =>
       (super.noSuchMethod(
         Invocation.method(
           #insert,
@@ -115,14 +134,14 @@ class MockMockDbHistory extends _i1.Mock implements _i3.MockDbHistory {
       ) as _i4.Future<int>);
 
   @override
-  _i4.Future<List<_i7.SearchHistoryModel>> get() => (super.noSuchMethod(
+  _i4.Future<List<_i8.SearchHistoryModel>> get() => (super.noSuchMethod(
         Invocation.method(
           #get,
           [],
         ),
-        returnValue: _i4.Future<List<_i7.SearchHistoryModel>>.value(
-            <_i7.SearchHistoryModel>[]),
-      ) as _i4.Future<List<_i7.SearchHistoryModel>>);
+        returnValue: _i4.Future<List<_i8.SearchHistoryModel>>.value(
+            <_i8.SearchHistoryModel>[]),
+      ) as _i4.Future<List<_i8.SearchHistoryModel>>);
 
   @override
   _i4.Future<int> remove(int? id) => (super.noSuchMethod(

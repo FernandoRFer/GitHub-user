@@ -1,55 +1,114 @@
+import 'package:flutter_test/flutter_test.dart';
 import 'dart:convert';
 import 'dart:typed_data';
-
-import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
+
+import 'package:open_labs/repository/model/logged_user_model.dart';
+import 'package:open_labs/repository/model/token_model.dart';
+import 'package:open_labs/repository/model/user_repos_model.dart';
 import 'package:open_labs/repository/rest_client/irest_client.dart';
 import 'package:open_labs/repository/rest_client/irest_response.dart';
+import 'package:open_labs/repository/rest_client/rest_client.dart';
 import 'package:open_labs/repository/rest_client/rest_client_exception.dart';
 import 'package:open_labs/repository/rest_client/rest_response.dart';
-import 'package:open_labs/repository/user_repository/iuser_repository.dart';
-import 'package:open_labs/repository/user_repository/model/user_model.dart';
+import 'package:open_labs/repository/token_repository/token_respository.dart';
+import 'package:open_labs/repository/gihub_repository/igithub_repository.dart';
+import 'package:open_labs/repository/model/user_model.dart';
 
-import 'package:open_labs/repository/user_repository/user_repository.dart';
+import 'package:open_labs/repository/gihub_repository/gitgub_repository.dart';
 
-class MockUserRepository extends Mock implements IUserRepository {}
+class MockUserRepository extends Mock implements IGithubRepository {}
 
 class MockRestResponse extends Mock implements IRestResponse {}
 
+class MockTokenResponse extends Mock implements ITokenReposytory {
+  @override
+  Future<TokenModel?> get() async {
+    return null;
+  }
+}
+
 class MockRestClient404 extends Mock implements IRestClient {
   @override
-  Future<IRestResponse> sendGet(
+  Future<RestResponse> sendGet(
       {required String url,
       Map<String, String>? headers,
-      String? authorization}) async {
+      Map<String, String>? authorization}) async {
     return restResponse404;
   }
 }
 
 class MockRestClient200 extends Mock implements IRestClient {
   @override
-  Future<IRestResponse> sendGet(
+  Future<RestResponse> sendGet(
       {required String url,
       Map<String, String>? headers,
-      String? authorization}) async {
+      Map<String, String>? authorization}) async {
     return restResponse200;
   }
 }
 
-@GenerateMocks([MockRestClient404])
+class MockRestClient extends Mock implements IRestClient {}
+
+class MockGithubAPIMock extends Mock implements IGithubRepository {
+  final RestClient _restClient = RestClient();
+  @override
+  Future<List<UserReposModel?>> repos() async {
+    var resp = await RestClient().sendGet(
+      url: "https://api.github.com/users/octocat/repos",
+    );
+
+    resp.ensureSuccess(restClientExceptionMessage: "Ocorreu um erro");
+    List<dynamic> list = jsonDecode(resp.content);
+    return list.map((e) => UserReposModel.fromJson(e)).toList();
+  }
+}
+
+class MockRestClientresp extends Mock implements IRestClient {
+  @override
+  Future<RestResponse> sendGet(
+      {required String url,
+      Map<String, String>? headers,
+      Map<String, String>? authorization}) async {
+    return restResponse200;
+  }
+}
+
+// @GenerateMocks([
+//   IRestClient,
+// ])
 main() async {
   late IRestClient restClient;
+  late ITokenReposytory tokenReposytory;
 
+  group("API mock github", () {
+    setUp(() {
+      restClient = MockRestClient();
+      tokenReposytory = MockTokenResponse();
+    });
+    test('Repos test model', () async {
+      // final resultMockAPI = await RestClient()
+      //     .sendGet(url: "https://api.github.com/users/octocat/repos");
+
+      // when(() => restClient.sendGet(url: ""))
+      //     .thenAnswer((_) async => (resultMockAPI));
+
+      var result = await MockGithubAPIMock().repos();
+
+      expect(result.runtimeType, List<UserReposModel>);
+    });
+  });
   group('not found test exception', () {
     setUp(() {
       restClient = MockRestClient404();
+      tokenReposytory = MockTokenResponse();
     });
 
     test("User not found", () async {
-      var userRepositoryTestError = UserRepository(restClient);
+      var userRepositoryTestError =
+          GithubRepository(restClient, tokenReposytory);
 
-      expect(() async => await userRepositoryTestError.getUsers("Fernan----"),
+      expect(() async => await userRepositoryTestError.getUser("Fernan----"),
           throwsA(isA<RestClientException>()));
     });
   });
@@ -57,13 +116,16 @@ main() async {
   group('Success', () {
     setUp(() {
       restClient = MockRestClient200();
+
+      tokenReposytory = MockTokenResponse();
     });
 
     test("Success", () async {
-      var userRepositoryTestError = UserRepository(restClient);
-      UserModel? result = await userRepositoryTestError.getUsers("Fernando");
+      var userRepositoryTestError =
+          GithubRepository(restClient, tokenReposytory);
+      final result = await userRepositoryTestError.getUser("Fernando");
 
-      expect(result.runtimeType, UserModel);
+      expect(result.runtimeType, LoggedUserModel());
       expect(result?.name, resultGet200.name);
       expect(result?.bio, resultGet200.bio);
       expect(result?.blog, resultGet200.blog);

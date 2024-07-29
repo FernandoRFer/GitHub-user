@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:open_labs/core/theme/app_theme.dart';
 
 class AppOutlinedButton extends StatelessWidget {
   const AppOutlinedButton(this.text,
@@ -20,8 +21,8 @@ class AppOutlinedButton extends StatelessWidget {
           backgroundColor: WidgetStateProperty.all(
               Theme.of(context).bottomSheetTheme.backgroundColor),
           shape: WidgetStateProperty.all(
-            RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(32.0),
+            const RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(kGlobalBorderRadiusInternal),
             ),
           )),
       onPressed: onPressed,
@@ -46,9 +47,7 @@ class AppOutlinedButton extends StatelessWidget {
                   const SizedBox(width: 10),
                   Text(text,
                       style: TextStyle(
-                          color: colorText ??
-                              Theme.of(context).scaffoldBackgroundColor,
-                          fontWeight: FontWeight.bold)),
+                          color: colorText, fontWeight: FontWeight.bold)),
                 ],
               ),
       ),

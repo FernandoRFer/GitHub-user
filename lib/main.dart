@@ -49,7 +49,7 @@ class _AppWidgetState extends State<AppWidget> {
       debugShowCheckedModeBanner: false,
       debugShowMaterialGrid: false,
       navigatorKey: widget._navigatorKey,
-      title: 'Open Labs',
+      title: 'Github-users',
       theme: AppTheme.themeData,
       onGenerateRoute: AppRoutes.onGenerateRoutes,
       initialRoute: AppRoutes.initial,

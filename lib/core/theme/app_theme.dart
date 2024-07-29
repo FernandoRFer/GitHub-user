@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import '/core/theme/app_color.dart';
 
-const kGlobalShapeBorder = Radius.circular(16.0);
-const kGlobalBorderRadius = Radius.circular(32.0);
+const kGlobalBorderRadiusInternal = Radius.circular(8.0);
+const kGlobalBorderRadiusExternal = Radius.circular(16.0);
 
 class AppTheme {
   static ThemeData themeData = ThemeData(

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
-import '../core/theme/app_theme.dart';
+import 'package:open_labs/core/theme/app_theme.dart';
 
 class AppTextFormField extends StatefulWidget {
   final Color? textColor;
@@ -70,19 +69,19 @@ class _AppTextFormFieldState extends State<AppTextFormField> {
       style: TextStyle(color: widget.textColor),
       decoration: InputDecoration(
           errorBorder: const OutlineInputBorder(
-            borderRadius: BorderRadius.all(kGlobalBorderRadius),
+            borderRadius: BorderRadius.all(kGlobalBorderRadiusInternal),
           ),
           focusedBorder: const OutlineInputBorder(
-            borderRadius: BorderRadius.all(kGlobalBorderRadius),
+            borderRadius: BorderRadius.all(kGlobalBorderRadiusInternal),
           ),
           focusedErrorBorder: const OutlineInputBorder(
-            borderRadius: BorderRadius.all(kGlobalBorderRadius),
+            borderRadius: BorderRadius.all(kGlobalBorderRadiusInternal),
           ),
           disabledBorder: const OutlineInputBorder(
-            borderRadius: BorderRadius.all(kGlobalBorderRadius),
+            borderRadius: BorderRadius.all(kGlobalBorderRadiusInternal),
           ),
           enabledBorder: const OutlineInputBorder(
-            borderRadius: BorderRadius.all(kGlobalBorderRadius),
+            borderRadius: BorderRadius.all(kGlobalBorderRadiusInternal),
           ),
           labelText: widget.labelText,
           labelStyle: TextStyle(color: widget.labelStyleColor),

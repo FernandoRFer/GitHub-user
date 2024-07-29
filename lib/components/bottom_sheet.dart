@@ -3,13 +3,10 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:open_labs/core/theme/app_theme.dart';
 
-class BottomSheetHelper {
+extension BottomSheetHelper on ScaffoldState {
   Future<bool?> bottomSheetCustom({
-    String title = "",
-    String subtitle = "",
-    List<Widget>? buttons,
+    required Widget child,
     required bool isDismissible,
-    required BuildContext context,
     bool enableDrag = false,
   }) async {
     return await showModalBottomSheet<bool>(
@@ -17,7 +14,7 @@ class BottomSheetHelper {
       enableDrag: enableDrag,
       context: context,
       shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(kGlobalShapeBorder),
+        borderRadius: BorderRadius.all(kGlobalBorderRadiusExternal),
       ),
       builder: ((context) {
         return SizedBox(
@@ -42,30 +39,7 @@ class BottomSheetHelper {
                   ),
                 ],
               ),
-              Padding(
-                padding: const EdgeInsets.all(8),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text(title,
-                        style: const TextStyle(
-                          color: Colors.red,
-                        )),
-                    const SizedBox(height: 20),
-                    ConstrainedBox(
-                      constraints: const BoxConstraints(maxHeight: 250),
-                      child: SingleChildScrollView(
-                        child: Text(subtitle, style: const TextStyle()),
-                      ),
-                    ),
-                    const SizedBox(height: 26),
-                    Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [...buttons ?? []],
-                    ),
-                  ],
-                ),
-              ),
+              child,
             ],
           ),
         );
