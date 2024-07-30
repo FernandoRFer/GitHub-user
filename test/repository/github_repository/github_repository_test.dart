@@ -3,19 +3,19 @@ import 'dart:convert';
 import 'dart:typed_data';
 import 'package:mockito/mockito.dart';
 
-import 'package:open_labs/repository/model/logged_user_model.dart';
-import 'package:open_labs/repository/model/token_model.dart';
-import 'package:open_labs/repository/model/user_repos_model.dart';
-import 'package:open_labs/repository/rest_client/irest_client.dart';
-import 'package:open_labs/repository/rest_client/irest_response.dart';
-import 'package:open_labs/repository/rest_client/rest_client.dart';
-import 'package:open_labs/repository/rest_client/rest_client_exception.dart';
-import 'package:open_labs/repository/rest_client/rest_response.dart';
-import 'package:open_labs/repository/token_repository/token_respository.dart';
-import 'package:open_labs/repository/gihub_repository/igithub_repository.dart';
-import 'package:open_labs/repository/model/user_model.dart';
+import 'package:github_user/repository/model/logged_user_model.dart';
+import 'package:github_user/repository/model/token_model.dart';
+import 'package:github_user/repository/model/user_repos_model.dart';
+import 'package:github_user/repository/rest_client/irest_client.dart';
+import 'package:github_user/repository/rest_client/irest_response.dart';
+import 'package:github_user/repository/rest_client/rest_client.dart';
+import 'package:github_user/repository/rest_client/rest_client_exception.dart';
+import 'package:github_user/repository/rest_client/rest_response.dart';
+import 'package:github_user/repository/token_repository/token_respository.dart';
+import 'package:github_user/repository/gihub_repository/igithub_repository.dart';
+import 'package:github_user/repository/model/user_model.dart';
 
-import 'package:open_labs/repository/gihub_repository/gitgub_repository.dart';
+import 'package:github_user/repository/gihub_repository/gitgub_repository.dart';
 
 class MockUserRepository extends Mock implements IGithubRepository {}
 

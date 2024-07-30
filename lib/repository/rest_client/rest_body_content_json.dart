@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:open_labs/repository/rest_client/irest_body_content.dart';
+import 'package:github_user/repository/rest_client/irest_body_content.dart';
 
 class RestBodyContentJson implements IRestBodyContent {
   final Object value;

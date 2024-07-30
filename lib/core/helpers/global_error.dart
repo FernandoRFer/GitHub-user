@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 import 'package:flutter/services.dart';
-import 'package:open_labs/repository/rest_client/rest_client_exception.dart';
+import 'package:github_user/repository/rest_client/rest_client_exception.dart';
 
 abstract class IGlobalError {
   Future<GlobalErrorModel> errorHandling(

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:open_labs/view/auth/auth_view.dart';
-import 'package:open_labs/view/home/home_view.dart';
-import 'package:open_labs/view/search/Saerch_view.dart';
-import 'package:open_labs/view/search/saerch_bloc.dart';
-import 'package:open_labs/view/splash/splash_bloc.dart';
-import 'package:open_labs/view/splash/splash_view.dart';
+import 'package:github_user/view/auth/auth_view.dart';
+import 'package:github_user/view/home/home_view.dart';
+import 'package:github_user/view/search/Saerch_view.dart';
+import 'package:github_user/view/search/saerch_bloc.dart';
+import 'package:github_user/view/splash/splash_bloc.dart';
+import 'package:github_user/view/splash/splash_view.dart';
 import 'custon_page_router.dart';
 
 class AppRoutes {

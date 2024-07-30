@@ -1,10 +1,10 @@
 import 'package:get_it/get_it.dart';
-import 'package:open_labs/repository/local_db/search_history_db.dart.dart';
-import 'package:open_labs/repository/rest_client/irest_client.dart';
-import 'package:open_labs/repository/rest_client/rest_client.dart';
-import 'package:open_labs/repository/token_repository/token_respository.dart';
-import 'package:open_labs/repository/gihub_repository/igithub_repository.dart';
-import 'package:open_labs/repository/gihub_repository/gitgub_repository.dart';
+import 'package:github_user/repository/local_db/search_history_db.dart.dart';
+import 'package:github_user/repository/rest_client/irest_client.dart';
+import 'package:github_user/repository/rest_client/rest_client.dart';
+import 'package:github_user/repository/token_repository/token_respository.dart';
+import 'package:github_user/repository/gihub_repository/igithub_repository.dart';
+import 'package:github_user/repository/gihub_repository/gitgub_repository.dart';
 
 import 'local_storage/storage_cache.dart';
 

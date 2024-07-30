@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:open_labs/core/theme/app_theme.dart';
+import 'package:github_user/core/theme/app_theme.dart';
 
 class AppOutlinedButton extends StatelessWidget {
   const AppOutlinedButton(this.text,

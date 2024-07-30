@@ -1,12 +1,12 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'package:open_labs/core/helpers/global_error.dart';
-import 'package:open_labs/core/navigator_app.dart';
-import 'package:open_labs/repository/local_db/search_history_db.dart.dart';
-import 'package:open_labs/repository/gihub_repository/igithub_repository.dart';
-import 'package:open_labs/repository/gihub_repository/gitgub_repository.dart';
-import 'package:open_labs/view/home/home_bloc.dart';
+import 'package:github_user/core/helpers/global_error.dart';
+import 'package:github_user/core/navigator_app.dart';
+import 'package:github_user/repository/local_db/search_history_db.dart.dart';
+import 'package:github_user/repository/gihub_repository/igithub_repository.dart';
+import 'package:github_user/repository/gihub_repository/gitgub_repository.dart';
+import 'package:github_user/view/home/home_bloc.dart';
 
 class MockGlobalError extends Mock implements IGlobalError {}
 

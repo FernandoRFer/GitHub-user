@@ -2,18 +2,18 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:open_labs/repository/model/logged_user_model.dart';
-import 'package:open_labs/repository/model/user_repos_model.dart';
+import 'package:github_user/repository/model/logged_user_model.dart';
+import 'package:github_user/repository/model/user_repos_model.dart';
 import 'package:rxdart/rxdart.dart';
 
-import 'package:open_labs/core/helpers/global_error.dart';
-import 'package:open_labs/core/navigator_app.dart';
-import 'package:open_labs/core/router/routes.dart';
-import 'package:open_labs/repository/local_db/search_history_db.dart.dart';
-import 'package:open_labs/repository/model/search_history_model.dart';
-import 'package:open_labs/repository/gihub_repository/igithub_repository.dart';
-import 'package:open_labs/repository/model/user_model.dart';
-import 'package:open_labs/view/view_state_entity.dart';
+import 'package:github_user/core/helpers/global_error.dart';
+import 'package:github_user/core/navigator_app.dart';
+import 'package:github_user/core/router/routes.dart';
+import 'package:github_user/repository/local_db/search_history_db.dart.dart';
+import 'package:github_user/repository/model/search_history_model.dart';
+import 'package:github_user/repository/gihub_repository/igithub_repository.dart';
+import 'package:github_user/repository/model/user_model.dart';
+import 'package:github_user/view/view_state_entity.dart';
 
 class HomeModelBloc extends ViewStateEntity {
   LoggedUserModel? user;

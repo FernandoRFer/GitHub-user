@@ -1,8 +1,8 @@
 import 'dart:convert';
 
-import 'package:open_labs/repository/local_storage/storage_cache.dart';
-import 'package:open_labs/repository/model/token_model.dart';
-import 'package:open_labs/repository/rest_client/irest_client.dart';
+import 'package:github_user/repository/local_storage/storage_cache.dart';
+import 'package:github_user/repository/model/token_model.dart';
+import 'package:github_user/repository/rest_client/irest_client.dart';
 
 abstract class ClienData {
   static String clientId = const String.fromEnvironment('CLIENT_ID');

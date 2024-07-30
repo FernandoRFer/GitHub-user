@@ -1,8 +1,8 @@
 import 'package:flutter/foundation.dart';
-import 'package:open_labs/core/helpers/global_error.dart';
-import 'package:open_labs/core/navigator_app.dart';
-import 'package:open_labs/core/router/routes.dart';
-import 'package:open_labs/view/view_state_entity.dart';
+import 'package:github_user/core/helpers/global_error.dart';
+import 'package:github_user/core/navigator_app.dart';
+import 'package:github_user/core/router/routes.dart';
+import 'package:github_user/view/view_state_entity.dart';
 import 'package:rxdart/rxdart.dart';
 
 class SplashModel extends ViewStateEntity {

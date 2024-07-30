@@ -1,5 +1,5 @@
 import 'dart:typed_data';
-import 'package:open_labs/repository/rest_client/helper/list_helper.dart';
+import 'package:github_user/repository/rest_client/helper/list_helper.dart';
 import 'irest_response.dart';
 import 'rest_client_exception.dart';
 

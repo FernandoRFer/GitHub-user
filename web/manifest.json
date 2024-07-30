@@ -1,6 +1,6 @@
 {
-    "name": "open_labs",
-    "short_name": "open_labs",
+    "name": "github_user",
+    "short_name": "github_user",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

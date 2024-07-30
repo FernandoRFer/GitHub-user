@@ -2,11 +2,11 @@ import 'dart:async';
 
 import 'package:app_links/app_links.dart';
 import 'package:flutter/foundation.dart';
-import 'package:open_labs/core/helpers/global_error.dart';
-import 'package:open_labs/core/navigator_app.dart';
-import 'package:open_labs/core/router/routes.dart';
-import 'package:open_labs/repository/token_repository/token_respository.dart';
-import 'package:open_labs/view/view_state_entity.dart';
+import 'package:github_user/core/helpers/global_error.dart';
+import 'package:github_user/core/navigator_app.dart';
+import 'package:github_user/core/router/routes.dart';
+import 'package:github_user/repository/token_repository/token_respository.dart';
+import 'package:github_user/view/view_state_entity.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:url_launcher/url_launcher.dart';
 

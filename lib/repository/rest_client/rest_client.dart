@@ -3,9 +3,9 @@ import 'dart:convert';
 import 'dart:typed_data';
 
 import 'package:http/http.dart' as http;
-import 'package:open_labs/repository/rest_client/irest_client.dart';
-import 'package:open_labs/repository/rest_client/irest_response.dart';
-import 'package:open_labs/repository/rest_client/rest_response.dart';
+import 'package:github_user/repository/rest_client/irest_client.dart';
+import 'package:github_user/repository/rest_client/irest_response.dart';
+import 'package:github_user/repository/rest_client/rest_response.dart';
 
 class RestClient implements IRestClient {
   final int secondsTimeout = 20;

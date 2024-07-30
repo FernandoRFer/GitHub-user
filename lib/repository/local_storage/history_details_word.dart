@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'dart:async';
 
-import 'package:open_labs/repository/local_storage/storage_cache.dart';
-import 'package:open_labs/repository/model/search_history_model.dart';
+import 'package:github_user/repository/local_storage/storage_cache.dart';
+import 'package:github_user/repository/model/search_history_model.dart';
 
 abstract class IHistoryCache {
   Future<SearchHistoryModel?> get(String id);

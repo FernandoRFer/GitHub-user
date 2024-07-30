@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:open_labs/repository/local_db/search_history_db.dart.dart';
-import 'package:open_labs/repository/model/search_history_model.dart';
+import 'package:github_user/repository/local_db/search_history_db.dart.dart';
+import 'package:github_user/repository/model/search_history_model.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 import 'package:path_provider_platform_interface/path_provider_platform_interface.dart';

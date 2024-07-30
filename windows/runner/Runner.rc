@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "open_labs" "\0"
+            VALUE "FileDescription", "github_user" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "open_labs" "\0"
+            VALUE "InternalName", "github_user" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2024 com.example. All rights reserved." "\0"
-            VALUE "OriginalFilename", "open_labs.exe" "\0"
-            VALUE "ProductName", "open_labs" "\0"
+            VALUE "OriginalFilename", "github_user.exe" "\0"
+            VALUE "ProductName", "github_user" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

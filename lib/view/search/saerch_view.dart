@@ -1,10 +1,10 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
-import 'package:open_labs/components/app_button.dart';
-import 'package:open_labs/components/bottom_sheet.dart';
-import 'package:open_labs/components/error_view.dart';
-import 'package:open_labs/components/loading.dart';
-import 'package:open_labs/core/helpers/global_error.dart';
+import 'package:github_user/components/app_button.dart';
+import 'package:github_user/components/bottom_sheet.dart';
+import 'package:github_user/components/error_view.dart';
+import 'package:github_user/components/loading.dart';
+import 'package:github_user/core/helpers/global_error.dart';
 import 'saerch_bloc.dart';
 
 class SearchView extends StatefulWidget {

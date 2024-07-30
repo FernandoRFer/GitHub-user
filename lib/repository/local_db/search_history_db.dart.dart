@@ -1,4 +1,4 @@
-import 'package:open_labs/repository/model/search_history_model.dart';
+import 'package:github_user/repository/model/search_history_model.dart';
 import 'package:path/path.dart' as p;
 import 'dart:io' as io;
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';

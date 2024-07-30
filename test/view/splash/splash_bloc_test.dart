@@ -1,9 +1,9 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
-import 'package:open_labs/core/helpers/global_error.dart';
-import 'package:open_labs/core/navigator_app.dart';
-import 'package:open_labs/view/splash/splash_bloc.dart';
+import 'package:github_user/core/helpers/global_error.dart';
+import 'package:github_user/core/navigator_app.dart';
+import 'package:github_user/view/splash/splash_bloc.dart';
 
 class MockGlobalError extends Mock implements IGlobalError {}
 

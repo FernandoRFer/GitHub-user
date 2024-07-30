@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:open_labs/core/theme/app_theme.dart';
+import 'package:github_user/core/theme/app_theme.dart';
 
 extension BottomSheetHelper on ScaffoldState {
   Future<bool?> bottomSheetCustom({

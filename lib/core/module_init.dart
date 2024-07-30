@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:open_labs/core/helpers/helpers_module.dart';
-import 'package:open_labs/core/navigator_app.dart';
-import 'package:open_labs/repository/repository_module.dart';
-import 'package:open_labs/view/view_module.dart';
+import 'package:github_user/core/helpers/helpers_module.dart';
+import 'package:github_user/core/navigator_app.dart';
+import 'package:github_user/repository/repository_module.dart';
+import 'package:github_user/view/view_module.dart';
 
 class AppModule {
   final GlobalKey<NavigatorState> navigatorKey;
