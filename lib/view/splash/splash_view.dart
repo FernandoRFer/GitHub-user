@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:github_user/components/bottom_sheet.dart';
 import 'package:github_user/components/error_view.dart';
 import 'package:github_user/core/helpers/global_error.dart';
@@ -28,7 +29,7 @@ class _SplashViewState extends State<SplashView>
     super.initState();
 
     _animation = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 1000));
+        vsync: this, duration: const Duration(milliseconds: 1200));
     widget.bloc.load();
   }
 
@@ -68,14 +69,20 @@ class _SplashViewState extends State<SplashView>
                   );
                 });
               }
-              return const Column(
+              return Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
-                    "Seja bem vindo,\nbusca de usuário GitHub",
-                    style: TextStyle(fontFamily: "Chunk", fontSize: 32),
-                  ),
-                  AnimatedLoading(),
+                  const Text("Welcome,\nGitHub repository",
+                          style: TextStyle(fontFamily: "Chunk", fontSize: 30))
+                      .animate(onPlay: (controller) => controller.repeat())
+                      .shimmer(
+                          duration: 1200.ms,
+                          color: Theme.of(context).primaryColorLight,
+                          angle: -0.2)
+                  // .shimmer(
+                  //     delay: 600.ms,
+                  //     duration: 1200.ms,
+                  //     color: Theme.of(context).primaryColorLight)
                 ],
               );
             },

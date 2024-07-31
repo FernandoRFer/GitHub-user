@@ -5,7 +5,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
-        android:label="OpenLabs"
+        android:label="GitHub"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher"
         android:value="true">
@@ -46,13 +46,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
 
             </intent-filter>
-            <intent-filter android:autoVerify="true"
-                tools:targetApi="m">
+            <intent-filter android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data android:scheme="https" />
+                <data android:host="fernandorfer.github.io" />
+            </intent-filter>
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
                 <data android:scheme="http" />
                 <data android:host="fernandorfer.github.io" />
             </intent-filter>

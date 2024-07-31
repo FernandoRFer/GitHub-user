@@ -2,6 +2,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:github_user/repository/local%20_file/linguage_color.dart';
 import 'package:github_user/repository/model/logged_user_model.dart';
 import 'package:github_user/repository/model/user_repos_model.dart';
 import 'package:rxdart/rxdart.dart';
@@ -110,6 +111,8 @@ class HomeBloc extends ChangeNotifier implements IHomeBloc {
   Future<void> load() async {
     try {
       _fetchingDataController.add(HomeModelBloc("Loading", isLoading: true));
+      //Inicializando lista de cor para liguagens de programação
+      await LinguageColor().initList();
       _user = await _userRepository.getLoggedUser();
       final userRepos = await _userRepository.repos();
       if (userRepos.isNotEmpty) _userReposModel.addAll(userRepos);

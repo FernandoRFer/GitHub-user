@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:github_user/repository/local%20_file/linguage_color.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 import 'core/module_init.dart';
@@ -13,6 +14,8 @@ void main() async {
 
   WidgetsFlutterBinding.ensureInitialized();
   _sqfliteTestInit();
+  //Buscar uma maneira melhor de inicialização da para linguageColor
+
   AppModule(navigatorKey).configure();
 
   return runApp(AppWidget(navigatorKey, globalRouteObserver));

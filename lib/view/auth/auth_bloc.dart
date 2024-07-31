@@ -73,8 +73,8 @@ class AuthBloc extends ChangeNotifier implements IAuthBloc {
         uri,
       );
 
-      _fetchingDataController.add(AuthModelBloc("Done",
-          isLoading: false, isStayConnected: _isStayConnected));
+      // _fetchingDataController.add(AuthModelBloc("Done",
+      //     isLoading: false, isStayConnected: _isStayConnected));
     } catch (e) {
       final error = await _globalError.errorHandling(
         "Um erro  ocorreu ao conectar, tente novamente",
@@ -88,6 +88,8 @@ class AuthBloc extends ChangeNotifier implements IAuthBloc {
 
   Future<void> _incomingLinkHandler(Uri uri) async {
     try {
+      _fetchingDataController.add(AuthModelBloc("Loading",
+          isLoading: true, isStayConnected: _isStayConnected));
       final queryParametersAll = (uri.queryParametersAll);
       if (queryParametersAll.containsKey('error')) {
         final error = await _globalError.errorHandling(
@@ -102,9 +104,11 @@ class AuthBloc extends ChangeNotifier implements IAuthBloc {
           _linkSubscription!.cancel();
           final authentication = queryParametersAll['code'];
           await _tokenReposytory.create(authentication![0]);
-          _navigatorApp.pushNamed(AppRoutes.home);
+          await _navigatorApp.pushNamed(AppRoutes.home);
         }
       }
+      _fetchingDataController.add(AuthModelBloc("Done",
+          isLoading: false, isStayConnected: _isStayConnected));
     } catch (e) {
       final error = await _globalError.errorHandling(
         "",

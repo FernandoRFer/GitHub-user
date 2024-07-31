@@ -72,13 +72,16 @@ class _AuthViewState extends State<AuthView> with Validator {
             padding: const EdgeInsets.all(8.0),
             child: StreamBuilder<AuthModelBloc>(
                 stream: widget.bloc.onFetchingData,
-                initialData: AuthModelBloc("loading",
+                initialData: AuthModelBloc("Loading",
                     isLoading: false, isStayConnected: false),
                 builder: (context, snapshot) {
                   if (!snapshot.hasError) {
                     if (snapshot.hasData) {
                       if (snapshot.data!.isLoading) {
-                        return const Center(child: AnimatedLoading());
+                        return Center(
+                            child: AnimatedLoading(
+                          title: snapshot.data!.state,
+                        ));
                       }
                     }
                   } else {
@@ -146,7 +149,7 @@ class _AuthViewState extends State<AuthView> with Validator {
                             // ),
                             const SizedBox(height: 4),
                             AppOutlinedButton(
-                              "Entrar",
+                              "Authentication",
                               onPressed: () async {
                                 if (_formKey.currentState!.validate()) {
                                   await widget.bloc.loginWeb();
@@ -158,7 +161,7 @@ class _AuthViewState extends State<AuthView> with Validator {
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
                                 const Text(
-                                  "Deseja manter conectado?",
+                                  "Do you want to stay connected?",
                                 ),
                                 Checkbox(
                                     value: _stayConnected,

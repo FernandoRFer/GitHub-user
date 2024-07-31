@@ -20,16 +20,16 @@ class AppRoutes {
 
   static Map<String, WidgetBuilder> get routes => {
         splash: (_) => SplashView(getIt.get<ISplashBloc>()),
-        // home: (_) => getIt.get<HomeView>(),
+        home: (_) => getIt.get<HomeView>(),
         search: (_) => SearchView(getIt.get<ISearchBloc>()),
         auth: (_) => getIt.get<AuthView>(),
       };
 
   static Route? onGenerateRoutes(RouteSettings routeSettings) {
     switch (routeSettings.name) {
-      case home:
-        return CustonPageRouter(
-            child: getIt.get<HomeView>(), settings: routeSettings);
+      // case home:
+      //   return CustonPageRouter(
+      //       child: getIt.get<HomeView>(), settings: routeSettings);
       default:
         return null;
     }

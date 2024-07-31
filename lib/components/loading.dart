@@ -21,7 +21,7 @@ class AnimatedLoading extends StatelessWidget {
           const SizedBox(
             width: 350,
             child: LinearProgressIndicator(
-              minHeight: 10,
+              minHeight: 6,
               borderRadius: BorderRadius.all(kGlobalBorderRadiusExternal),
             ),
             //   child: const Icon(
@@ -48,7 +48,7 @@ class AnimatedLoading extends StatelessWidget {
             //   duration: const Duration(milliseconds: 2000),
           ),
           const SizedBox(
-            height: 8,
+            height: 16,
           ),
           title != null
               ? Row(
