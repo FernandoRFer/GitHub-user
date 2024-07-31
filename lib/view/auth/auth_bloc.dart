@@ -26,6 +26,7 @@ abstract class IAuthBloc {
   Future<void> dispose();
   void stayConnected();
   void navigatePop();
+  Future<void> load();
 }
 
 class AuthBloc extends ChangeNotifier implements IAuthBloc {
@@ -50,6 +51,24 @@ class AuthBloc extends ChangeNotifier implements IAuthBloc {
     await _fetchingDataController.close();
 
     super.dispose();
+  }
+
+  @override
+  Future<void> load() async {
+    try {
+      _fetchingDataController.add(AuthModelBloc("Loading",
+          isLoading: true, isStayConnected: _isStayConnected));
+      _fetchingDataController.add(AuthModelBloc("Done",
+          isLoading: false, isStayConnected: _isStayConnected));
+    } catch (e) {
+      final error = await _globalError.errorHandling(
+        "Um erro  ocorreu ao conectar, tente novamente",
+        e,
+      );
+      _fetchingDataController.addError(
+        error,
+      );
+    }
   }
 
   @override

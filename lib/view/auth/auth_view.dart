@@ -22,12 +22,14 @@ class AuthView extends StatefulWidget {
   State<AuthView> createState() => _AuthViewState();
 }
 
-class _AuthViewState extends State<AuthView> with Validator {
+class _AuthViewState extends State<AuthView>
+    with Validator, WidgetsBindingObserver {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _passordController = TextEditingController();
   final TextEditingController _userController = TextEditingController();
   bool _stayConnected = false;
   late StreamSubscription<AuthModelBloc> listenBloc;
+
   // final LocalAuthentication auth = LocalAuthentication();
   // final _SupportState _supportState = _SupportState.unknown;
   // bool? _canCheckBiometrics;
@@ -43,6 +45,14 @@ class _AuthViewState extends State<AuthView> with Validator {
   //             : _SupportState.unsupported),
   //       );
   // }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    super.didChangeAppLifecycleState(state);
+    if (state == AppLifecycleState.resumed) {
+      widget.bloc.load();
+    }
+  }
 
   @override
   void initState() {
