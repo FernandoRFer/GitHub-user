@@ -1,7 +1,5 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'dart:async';
 import 'dart:developer';
-
-import 'package:flutter/material.dart';
 import 'package:github_user/repository/local%20_file/linguage_color.dart';
 import 'package:github_user/repository/model/logged_user_model.dart';
 import 'package:github_user/repository/model/user_repos_model.dart';
@@ -13,7 +11,6 @@ import 'package:github_user/core/router/routes.dart';
 import 'package:github_user/repository/local_db/search_history_db.dart.dart';
 import 'package:github_user/repository/model/search_history_model.dart';
 import 'package:github_user/repository/gihub_repository/igithub_repository.dart';
-import 'package:github_user/repository/model/user_model.dart';
 import 'package:github_user/view/view_state_entity.dart';
 
 class HomeModelBloc extends ViewStateEntity {
@@ -77,7 +74,7 @@ abstract class IHomeBloc {
   void setProgrammingLanguage(bool visibleProgrammingLanguage);
 }
 
-class HomeBloc extends ChangeNotifier implements IHomeBloc {
+class HomeBloc implements IHomeBloc {
   final IGlobalError _globalError;
   final INavigatorApp _navigatorApp;
   final IGithubRepository _userRepository;
@@ -94,6 +91,7 @@ class HomeBloc extends ChangeNotifier implements IHomeBloc {
 
   final _fetchingDataController = BehaviorSubject<HomeModelBloc>();
   final _userNameController = BehaviorSubject<String>();
+  final userdddd = StreamController();
   LoggedUserModel? _user;
 
   final List<UserReposModel?> _userReposModel = [];
@@ -104,7 +102,6 @@ class HomeBloc extends ChangeNotifier implements IHomeBloc {
   Future<void> dispose() async {
     await _fetchingDataController.close();
     await _userNameController.close();
-    super.dispose();
   }
 
   @override

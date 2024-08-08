@@ -6,7 +6,6 @@ import 'package:github_user/repository/model/user_repos_model.dart';
 import 'package:github_user/repository/rest_client/irest_client.dart';
 import 'package:github_user/repository/token_repository/token_respository.dart';
 import 'package:github_user/repository/gihub_repository/igithub_repository.dart';
-import 'package:github_user/repository/model/user_model.dart';
 
 class GithubRepository implements IGithubRepository {
   final IRestClient _restClient;

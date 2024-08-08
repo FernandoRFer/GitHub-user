@@ -6,6 +6,8 @@
             "type": "dart",
             "program": "lib/main.dart",
             "args": [
+                "--dart-define=CLIENT_ID=Ov23lihga4gv5k7IOqFZ",
+                "--dart-define=CLIENT_SECRET=4c10eff78465bfe3ab69a8e0a1dfeb17643f5a6e"
                 
             ]
 

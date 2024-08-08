@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:app_links/app_links.dart';
-import 'package:flutter/foundation.dart';
 import 'package:github_user/core/helpers/global_error.dart';
 import 'package:github_user/core/navigator_app.dart';
 import 'package:github_user/core/router/routes.dart';
@@ -29,7 +28,7 @@ abstract class IAuthBloc {
   Future<void> load();
 }
 
-class AuthBloc extends ChangeNotifier implements IAuthBloc {
+class AuthBloc implements IAuthBloc {
   final IGlobalError _globalError;
   final INavigatorApp _navigatorApp;
   final ITokenReposytory _tokenReposytory;
@@ -49,8 +48,6 @@ class AuthBloc extends ChangeNotifier implements IAuthBloc {
   @override
   Future<void> dispose() async {
     await _fetchingDataController.close();
-
-    super.dispose();
   }
 
   @override

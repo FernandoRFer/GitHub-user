@@ -19,7 +19,7 @@ abstract class ISplashBloc {
   void navigatorPop();
 }
 
-class SplashBloc extends ChangeNotifier implements ISplashBloc {
+class SplashBloc implements ISplashBloc {
   final _streamController = BehaviorSubject<SplashModel>();
   final IGlobalError _globalError;
   final INavigatorApp _navigatorApp;
@@ -31,7 +31,6 @@ class SplashBloc extends ChangeNotifier implements ISplashBloc {
 
   @override
   Future<void> dispose() async {
-    super.dispose();
     await _streamController.close();
   }
 

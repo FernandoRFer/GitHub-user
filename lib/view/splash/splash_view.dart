@@ -79,10 +79,6 @@ class _SplashViewState extends State<SplashView>
                           duration: 1200.ms,
                           color: Theme.of(context).primaryColorLight,
                           angle: -0.2)
-                  // .shimmer(
-                  //     delay: 600.ms,
-                  //     duration: 1200.ms,
-                  //     color: Theme.of(context).primaryColorLight)
                 ],
               );
             },

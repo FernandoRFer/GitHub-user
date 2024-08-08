@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:github_user/core/helpers/global_error.dart';
 import 'package:github_user/core/navigator_app.dart';
 import 'package:github_user/repository/local_db/search_history_db.dart.dart';
@@ -24,7 +23,7 @@ abstract class ISearchBloc {
   Future<void> deleteHistory(int id);
 }
 
-class SearchBloc extends ChangeNotifier implements ISearchBloc {
+class SearchBloc implements ISearchBloc {
   final IGlobalError _globalError;
   final INavigatorApp _navigatorApp;
   final IDbHistory _dbHistory;
@@ -40,7 +39,6 @@ class SearchBloc extends ChangeNotifier implements ISearchBloc {
   @override
   Future<void> dispose() async {
     await _fetchingDataController.close();
-    super.dispose();
   }
 
   @override
